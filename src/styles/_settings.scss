@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "Monument Extended";
+  src: url("../fonts/MonumentExtended-Ultrabold.woff2") format("woff2"),
+    url("../fonts/MonumentExtended-Ultrabold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Monument Extended";
+  src: url("../fonts/MonumentExtended-Regular.woff2") format("woff2"),
+    url("../fonts/MonumentExtended-Regular.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vercetti";
+  src: url("../fonts/Vercetti-Regular.woff2") format("woff2"),
+    url("../fonts/Vercetti-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$color-primary: #18181c;
+$color-secondary: #2a2a2f;
+$white: rgb(240, 240, 240);
+$black: #202020;
+$grey: #cfcfcf;
+
+@mixin verticalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Monument Extended", sans-serif;
+  font-weight: normal;
+  background-color: $black;
+  color: $white;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+}
+
+.container {
+  position: relative;
+  margin: auto 20px;
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1240px;
+    width: 100%;
+    margin: auto;
+  }
+}
