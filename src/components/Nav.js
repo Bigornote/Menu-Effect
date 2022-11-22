@@ -1,15 +1,42 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Senna from "../assets/senna.jpg";
+import Prost from "../assets/prost.jpg";
+import Schumacher from "../assets/schumacher.jpg";
+import Hamilton from "../assets/hamilton.jpg";
 
 const Nav = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  let links = document.querySelectorAll(".nav-item");
+  let linkImg = document.querySelectorAll(".hover-reveal img");
+  let a = document.querySelectorAll(".nav-item a");
+
+  links.forEach((link, index) => {
+    link.addEventListener("mousemove", (e) => {
+      linkImg[index].style.opacity = 1;
+      linkImg[index].style.transform = "scale(1,1) rotate(5deg)";
+      linkImg[index].style.zIndex = 10;
+      link.children[1].style.zIndex = 3;
+      link.children[1].style.transform = `translate(${e.clientX + 150}px, -${
+        e.clientY / 3
+      }px)`;
+    });
+
+    link.addEventListener("mouseleave", (e) => {
+      linkImg[index].style.opacity = 0;
+      linkImg[index].style.zIndex = -1;
+      linkImg[index].style.transform = "scale(0.7,0.7) rotate(0deg)";
+      link.children[1].style.zIndex = -1;
+    });
+  });
 
   return (
     <div className="nav">
       <div className="nav-container">
         <div className="navbar">
-          <div className="logo">Menu Effect</div>
+          <div className="logo">Legends</div>
           <div
             className="menu-toggle"
             onClick={() => setNavbarOpen(!navbarOpen)}
@@ -40,8 +67,11 @@ const Nav = () => {
                 transitionDelay: navbarOpen ? "0.8s" : "0s",
               }}
             >
-              Home
+              Ayrton Senna
             </Link>
+            <div className="hover-reveal">
+              <img src={Senna} alt="Ayrton Senna" />
+            </div>
             <div className="nav-item-wrapper"></div>
           </li>
           <li className="nav-item">
@@ -53,8 +83,11 @@ const Nav = () => {
                 transitionDelay: navbarOpen ? "0.9s" : "0s",
               }}
             >
-              Projects
+              Alain Prost
             </Link>
+            <div className="hover-reveal">
+              <img src={Prost} alt="Alain Prost" />
+            </div>
             <div className="nav-item-wrapper"></div>
           </li>
           <li className="nav-item">
@@ -66,8 +99,11 @@ const Nav = () => {
                 transitionDelay: navbarOpen ? "1s" : "0s",
               }}
             >
-              About
+              Michael Schumacher
             </Link>
+            <div className="hover-reveal">
+              <img src={Schumacher} alt="Michael Schumacher" />
+            </div>
             <div className="nav-item-wrapper"></div>
           </li>
           <li className="nav-item">
@@ -79,8 +115,11 @@ const Nav = () => {
                 transitionDelay: navbarOpen ? "1.1s" : "0s",
               }}
             >
-              Contact
+              Lewis Hamilton
             </Link>
+            <div className="hover-reveal">
+              <img src={Hamilton} alt="Lewis Hamilton" />
+            </div>
             <div className="nav-item-wrapper"></div>
           </li>
         </ul>
@@ -93,7 +132,7 @@ const Nav = () => {
               transitionDelay: navbarOpen ? "1.2s" : "0s",
             }}
           >
-            <span>Saint-Malo, FR</span>
+            <span>Bigorno, FR</span>
           </div>
           <div className="nav-social-media">
             <ul>
