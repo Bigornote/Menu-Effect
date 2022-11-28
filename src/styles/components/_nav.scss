@@ -98,6 +98,10 @@
       align-items: start;
 
       .nav-item {
+        width: 100%;
+      }
+
+      .link {
         display: flex;
         align-items: center;
         list-style: none;
@@ -174,16 +178,19 @@
 
     .hover-reveal {
       position: absolute;
-      z-index: -1;
+      top: 0;
+      left: 0;
+      z-index: 10;
       width: 100%;
+      transform: translate(50%, 0%);
 
-      img {
+      .hidden-img {
         opacity: 0;
-        width: 300px;
+        width: 275px;
         position: absolute;
         transform-origin: center;
-        transform: scale(0.7, 0.7);
-        transition: transform 5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translate(0px, -25%) rotate(-5deg) scale(0.7, 0.7);
+        transition: transform 3s cubic-bezier(0.16, 1, 0.3, 1);
       }
     }
   }

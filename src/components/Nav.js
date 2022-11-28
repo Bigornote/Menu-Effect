@@ -9,28 +9,26 @@ import Hamilton from "../assets/hamilton.jpg";
 const Nav = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  let links = document.querySelectorAll(".nav-item");
-  let linkImg = document.querySelectorAll(".hover-reveal img");
-  let a = document.querySelectorAll(".nav-item a");
+  const link = document.querySelectorAll(".link");
+  const linkHoverReveal = document.querySelectorAll(".hover-reveal");
+  const linkImages = document.querySelectorAll(".hidden-img");
 
-  links.forEach((link, index) => {
-    link.addEventListener("mousemove", (e) => {
-      linkImg[index].style.opacity = 1;
-      linkImg[index].style.transform = "scale(1,1) rotate(5deg)";
-      linkImg[index].style.zIndex = 10;
-      link.children[1].style.zIndex = 3;
-      link.children[1].style.transform = `translate(${e.clientX + 150}px, -${
-        e.clientY / 3
-      }px)`;
+  for (let i = 0; i < link.length; i++) {
+    link[i].addEventListener("mousemove", (e) => {
+      linkImages[i].style.opacity = 1;
+      linkHoverReveal[i].style.transform = `translate(0%, -50% ) `;
+      linkImages[i].style.transform =
+        " translate(0px, -25%) rotate(5deg) scale(1, 1)";
+      linkHoverReveal[i].style.left = e.clientX + "px";
     });
 
-    link.addEventListener("mouseleave", (e) => {
-      linkImg[index].style.opacity = 0;
-      linkImg[index].style.zIndex = -1;
-      linkImg[index].style.transform = "scale(0.7,0.7) rotate(0deg)";
-      link.children[1].style.zIndex = -1;
+    link[i].addEventListener("mouseleave", (e) => {
+      linkImages[i].style.opacity = 0;
+      linkHoverReveal[i].style.transform = `translate(0%, 0%) rotate(-5deg)`;
+      linkImages[i].style.transform =
+        "translate(0px, -25%) rotate(-5deg) scale(0.7, 0.7)";
     });
-  });
+  }
 
   return (
     <div className="nav">
@@ -59,68 +57,84 @@ const Nav = () => {
       >
         <ul className="nav-links">
           <li className="nav-item">
-            <Link
-              to="/"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-              style={{
-                top: navbarOpen ? "0" : "120px",
-                transitionDelay: navbarOpen ? "0.8s" : "0s",
-              }}
-            >
-              Ayrton Senna
-            </Link>
-            <div className="hover-reveal">
-              <img src={Senna} alt="Ayrton Senna" />
+            <div className="link">
+              <Link
+                to="/"
+                onClick={() => setNavbarOpen(!navbarOpen)}
+                style={{
+                  top: navbarOpen ? "0" : "120px",
+                  transitionDelay: navbarOpen ? "0.8s" : "0s",
+                }}
+              >
+                Ayrton Senna
+              </Link>
+              <div className="hover-reveal">
+                <img className="hidden-img" src={Senna} alt="Ayrton Senna" />
+              </div>
+              <div className="nav-item-wrapper"></div>
             </div>
-            <div className="nav-item-wrapper"></div>
           </li>
           <li className="nav-item">
-            <Link
-              to="/projects"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-              style={{
-                top: navbarOpen ? "0" : "120px",
-                transitionDelay: navbarOpen ? "0.9s" : "0s",
-              }}
-            >
-              Alain Prost
-            </Link>
-            <div className="hover-reveal">
-              <img src={Prost} alt="Alain Prost" />
+            <div className="link">
+              <Link
+                to="/projects"
+                onClick={() => setNavbarOpen(!navbarOpen)}
+                style={{
+                  top: navbarOpen ? "0" : "120px",
+                  transitionDelay: navbarOpen ? "0.9s" : "0s",
+                }}
+              >
+                Alain Prost
+              </Link>
+              <div className="hover-reveal">
+                <img className="hidden-img" src={Prost} alt="Alain Prost" />
+              </div>
+              <div className="nav-item-wrapper"></div>
             </div>
-            <div className="nav-item-wrapper"></div>
           </li>
           <li className="nav-item">
-            <Link
-              to="/about"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-              style={{
-                top: navbarOpen ? "0" : "120px",
-                transitionDelay: navbarOpen ? "1s" : "0s",
-              }}
-            >
-              Michael Schumacher
-            </Link>
-            <div className="hover-reveal">
-              <img src={Schumacher} alt="Michael Schumacher" />
+            <div className="link">
+              <Link
+                to="/about"
+                onClick={() => setNavbarOpen(!navbarOpen)}
+                style={{
+                  top: navbarOpen ? "0" : "120px",
+                  transitionDelay: navbarOpen ? "1s" : "0s",
+                }}
+              >
+                Michael Schumacher
+              </Link>
+              <div className="hover-reveal">
+                <img
+                  className="hidden-img"
+                  src={Schumacher}
+                  alt="Michael Schumacher"
+                />
+              </div>
+              <div className="nav-item-wrapper"></div>
             </div>
-            <div className="nav-item-wrapper"></div>
           </li>
           <li className="nav-item">
-            <Link
-              to="/contact"
-              onClick={() => setNavbarOpen(!navbarOpen)}
-              style={{
-                top: navbarOpen ? "0" : "120px",
-                transitionDelay: navbarOpen ? "1.1s" : "0s",
-              }}
-            >
-              Lewis Hamilton
-            </Link>
-            <div className="hover-reveal">
-              <img src={Hamilton} alt="Lewis Hamilton" />
+            <div className="link">
+              <Link
+                to="/contact"
+                onClick={() => setNavbarOpen(!navbarOpen)}
+                style={{
+                  top: navbarOpen ? "0" : "120px",
+                  transitionDelay: navbarOpen ? "1.1s" : "0s",
+                }}
+              >
+                Lewis Hamilton
+              </Link>
+              <div className="hover-reveal">
+                <img
+                  className="hidden-img"
+                  src={Hamilton}
+                  alt="Lewis Hamilton"
+                />
+              </div>
+              <div className="nav-item-wrapper"></div>
             </div>
-            <div className="nav-item-wrapper"></div>
           </li>
         </ul>
         <div className="nav-footer">
